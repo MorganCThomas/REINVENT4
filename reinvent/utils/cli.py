@@ -105,5 +105,12 @@ def parse_command_line():
         action="version",
         version=f"{VERSION_STR}.",
     )
+    
+    parser.add_argument(
+        "--molscore_config",
+        type=os.path.abspath,
+        help="Pass a molscore config file to override settings set in input config."
+        
+    )
 
     return parser.parse_args()

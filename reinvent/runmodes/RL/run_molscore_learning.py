@@ -214,7 +214,8 @@ def run_molscore_learning(
     
     # Read MolScore configuration
     if molscore_config is not None:
-        molscore_cfg = config_parse.read_config(args.config_filename, "json")
+        molscore_cfg = config_parse.read_config(molscore_config, molscore_config.rsplit(".")[-1])
+        _ = input_config.pop("molscore_config", None)  # Remove from input config
     else:
         assert "molscore_config" in input_config, "MolScore configuration is required"
         molscore_cfg = input_config.pop("molscore_config")
