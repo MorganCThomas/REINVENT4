@@ -273,14 +273,7 @@ def run_molscore_learning(
     sampler, _ = setup_sampler(model_type, parameters.dict(), agent)
     reward_strategy = setup_reward_strategy(config.learning_strategy, agent)
 
-    global_df_only = False
-
-    if parameters.use_checkpoint and "staged_learning" in agent_save_dict:
-        logger.info(f"Using diversity filter from {agent_model_filename}")
-        diversity_filter = agent_save_dict["staged_learning"]["diversity_filter"]
-    elif config.diversity_filter:
-        diversity_filter = setup_diversity_filter(config.diversity_filter, rdkit_smiles_flags2)
-        global_df_only = True
+    # NOTE we don't use the divesity filter from here, instead use MolScore
 
     if parameters.purge_memories:
         logger.info("Purging diversity filter memories after each stage")
@@ -298,8 +291,8 @@ def run_molscore_learning(
 
     #packages = create_packages(reward_strategy, stages, rdkit_smiles_flags2)
 
-    summary_csv_prefix = parameters.summary_csv_prefix
-
+    # NOTE MolScore saves output by default
+    
     # FIXME: is there a sensible default, this is only needed by Mol2Mol
     distance_threshold = parameters.distance_threshold
 

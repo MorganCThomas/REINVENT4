@@ -1,6 +1,25 @@
 REINVENT 4
 ==========
 
+Edit
+----------
+This repository has been modified to work with [MolScore](https://github.com/MorganCThomas/MolScore).
+
+To run reinvent4 in RL mode with MolScore, you need to setup your config as such:
+```json
+{
+    "run_type": "molscore_learning",
+    ...
+    "molscore_config": {
+        "molscore_mode": "benchmark",
+        "molscore_task": "GuacaMol",
+        "molscore_kwargs": {},
+        "total_smiles": 1000,
+        "output_dir": "./"
+    }
+}
+```
+See MolScore for more details and tutorials. 
 
 Description
 -----------
