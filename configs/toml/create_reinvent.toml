@@ -1,0 +1,15 @@
+[io]
+smiles_file = "/workspace1/Priors/Guacamol/guacamol_all"
+model_file = "model.pt"
+
+[network]
+num_layers = 3
+layer_sie = 512
+dropout = 0.0
+max_sequence_length = 256
+cell_type = "gru"
+embedding_layer_size = 256
+layer_normalization = false
+standardize = false
+
+[metadata]

@@ -61,7 +61,7 @@ class SectionResponder(GlobalConfig):
 
 class RLConfig(GlobalConfig):
     parameters: SectionParameters
-    stage: List[SectionStage]
+    stage: List[SectionStage] = None
     learning_strategy: Optional[SectionLearningStrategy] = None
     diversity_filter: Optional[SectionDiversityFilter] = None
     inception: Optional[SectionInception] = None

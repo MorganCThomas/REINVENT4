@@ -1,0 +1,27 @@
+{
+    "run_type": "molscore_learning",
+    "use_cuda": true,
+    "tb_logdir": "tb_logs",
+    "json_out_config": "_molscore_learning.json",
+    "parameters": {
+        "use_checkpoint": false,
+        "summary_csv_prefix": "staged_learning",
+        "prior_file": "models/Guacamol_reinvent.prior",
+        "agent_file": "models/Guacamol_reinvent.prior",
+        "batch_size": 64,
+        "unique_sequences": false,
+        "randomize_smiles": false
+    },
+    "learning_strategy": {
+        "type": "dap",
+        "sigma": 128,
+        "rate": 0.0001
+    },
+    "molscore_config": {
+        "molscore_mode": "benchmark",
+        "molscore_task": "GuacaMol",
+        "molscore_kwargs": {},
+        "total_smiles": 1000,
+        "output_dir": "./"
+    }
+}

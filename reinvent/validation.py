@@ -21,6 +21,7 @@ class ReinventConfig(GlobalConfig):
     scoring: Optional[dict] = None  # RL, scoring
     scheduler: Optional[dict] = None  # TL
     responder: Optional[dict] = None  # Rl, TL, sampling
+    molscore_config: Optional[dict] = None  # RL
 
     # RL
     stage: Optional[list] = None

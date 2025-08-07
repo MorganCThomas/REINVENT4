@@ -161,12 +161,14 @@ def main(args: Any):
         )
 
     try:
+        extra_args = vars(args)
         runner(
             input_config=extract_sections(input_config),
             device=actual_device,
             tb_logdir=tb_logdir,
             responder_config=responder_config,
             write_config=write_config,
+            molscore_config=extra_args.get("molscore_config", None)
         )
     except StageInterruptedControlled as e:
         logger.info(f"Requested to terminate: {e.args[0]}")
