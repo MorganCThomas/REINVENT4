@@ -112,5 +112,11 @@ def parse_command_line():
         help="Pass a molscore config file to override settings set in input config."
         
     )
+    
+    parser.add_argument(
+        "--n_jobs",
+        type=int,
+        help="Ignored but needed for MolScore baselines"
+    )
 
     return parser.parse_args()

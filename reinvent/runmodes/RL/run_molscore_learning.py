@@ -326,24 +326,24 @@ def run_molscore_learning(
             **molscore_cfg.get("molscore_kwargs", {}),
         )
         with task as scoring_function:
-                # Setup optimizer
-                optimize = model_learning(
-                    max_steps=int(1e9), # Set very high to rely on terminator.
-                    stage_no=0,
-                    prior=prior,
-                    state=ModelState(agent, None), # No diversity filter, handled by MolScore
-                    scoring_function=partial(wrap_scoring_function, scoring_function),
-                    reward_strategy=reward_strategy,
-                    sampling_model=sampler,
-                    smilies=smilies,
-                    distance_threshold=distance_threshold,
-                    rdkit_smiles_flags=rdkit_smiles_flags,
-                    inception=inception,
-                    responder_config=responder_config,
-                    tb_logdir=None,
-                )
-                # Optimize
-                _ = optimize(partial(wrap_terminator, scoring_function))
+            # Setup optimizer
+            optimize = model_learning(
+                max_steps=int(1e9), # Set very high to rely on terminator.
+                stage_no=0,
+                prior=prior,
+                state=ModelState(agent, None), # No diversity filter, handled by MolScore
+                scoring_function=partial(wrap_scoring_function, scoring_function),
+                reward_strategy=reward_strategy,
+                sampling_model=sampler,
+                smilies=smilies,
+                distance_threshold=distance_threshold,
+                rdkit_smiles_flags=rdkit_smiles_flags,
+                inception=inception,
+                responder_config=responder_config,
+                tb_logdir=None,
+            )
+            # Optimize
+            _ = optimize(partial(wrap_terminator, scoring_function))
                 
     # Benchmark mode
     if molscore_cfg['molscore_mode'] == "benchmark":
@@ -376,6 +376,7 @@ def run_molscore_learning(
                         )
                         # Optimize
                         _ = optimize(partial(wrap_terminator, scoring_function))
+                        torch.cuda.empty_cache()  # Free GPU memory after each task
                         
     # Curriculum mode
     if molscore_cfg['molscore_mode'] == "curriculum":
