@@ -376,6 +376,12 @@ def run_molscore_learning(
                         )
                         # Optimize
                         _ = optimize(partial(wrap_terminator, scoring_function))
+                        # Reset the agent
+                        agent, agent_save_dict, agent_model_type = create_adapter(
+                            agent_model_filename, agent_mode, device
+                        )
+                        sampler, _ = setup_sampler(model_type, parameters.dict(), agent)
+                        reward_strategy = setup_reward_strategy(config.learning_strategy, agent)
                         torch.cuda.empty_cache()  # Free GPU memory after each task
                         
     # Curriculum mode
