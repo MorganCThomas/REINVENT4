@@ -1,5 +1,5 @@
 [io]
-smiles_file = "/workspace1/Priors/Guacamol/guacamol_all"
+smiles_file = "/shared/morgan/MolScore_baselines/datasets/molopt/ZINC.smi"
 model_file = "model.pt"
 
 [network]

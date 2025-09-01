@@ -1,0 +1,18 @@
+{
+    "run_type": "transfer_learning",
+    "use_cuda": true,
+    "tb_logdir": "tb_TL",
+    "json_out_config": "json_transfer_learning.json",
+    "parameters": {
+        "num_epochs": 5,
+        "save_every_n_epochs": 5,
+        "batch_size": 128,
+        "num_refs": 0,
+        "sample_batch_size": 100,
+        "input_model_file": "models/MolOpt_empty.prior",
+        "smiles_file": "/shared/morgan/MolScore_baselines/datasets/molopt/ZINC.smi",
+        "output_model_file": "models/MolOpt_reinvent.prior",
+        "standardize_smiles": false,
+        "randomize_smiles": false
+    }
+}
